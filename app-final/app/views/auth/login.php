@@ -59,18 +59,48 @@ body{font-family:'Inter',sans-serif;min-height:100vh;overflow:hidden}
 .lp-right{
   background:var(--warm-white);display:flex;align-items:center;justify-content:center;
   padding:40px 48px;position:relative;overflow:hidden;
+  background-image:
+    radial-gradient(circle at 15% 85%,rgba(201,168,76,.12) 0%,transparent 50%),
+    radial-gradient(circle at 85% 10%,rgba(128,0,0,.08) 0%,transparent 45%),
+    radial-gradient(ellipse at 50% 50%,rgba(255,253,249,.6) 0%,transparent 80%);
 }
+/* Subtle warm dot texture */
+.lp-right::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(168,133,58,.12) 1px,transparent 1px);
+  background-size:28px 28px;z-index:0;
+}
+/* Gold glow blob top-right */
 .lp-right::before{
-  content:'';position:absolute;top:-120px;right:-120px;width:300px;height:300px;
-  background:linear-gradient(135deg,var(--gold-light),rgba(128,0,0,.15));border-radius:50%;opacity:.3;filter:blur(60px);
+  content:'';position:absolute;top:-80px;right:-80px;width:260px;height:260px;
+  background:radial-gradient(circle,var(--gold-light),transparent 70%);
+  border-radius:50%;opacity:.35;filter:blur(40px);z-index:0;
+}
+/* Bottom-left maroon glow */
+.lp-right-glow2{
+  position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(128,0,0,.18),transparent 70%);
+  border-radius:50%;filter:blur(40px);pointer-events:none;z-index:0;
 }
 
 /* ── Form Card ──────────────────────────────────────── */
-.lp-card{width:100%;max-width:380px;position:relative;z-index:2;animation:slideUp .5s ease}
+.lp-card{
+  width:100%;max-width:380px;position:relative;z-index:2;animation:slideUp .5s ease;
+  background:rgba(255,253,249,.88);border-radius:20px;padding:36px 40px;
+  border:1px solid rgba(201,168,76,.2);
+  box-shadow:0 8px 40px rgba(128,0,0,.08),0 1px 0 rgba(201,168,76,.3) inset;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+/* Gold accent top bar */
+.lp-card::before{
+  content:'';position:absolute;top:0;left:40px;right:40px;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  border-radius:0 0 4px 4px;
+}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 /* Brand */
-.lp-brand{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+.lp-brand{display:flex;align-items:center;gap:14px;margin-bottom:28px}
 .lp-logo{
   width:46px;height:46px;border-radius:12px;
   background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));
@@ -183,6 +213,7 @@ body{font-family:'Inter',sans-serif;min-height:100vh;overflow:hidden}
 
   <!-- ── Right login panel ── -->
   <div class="lp-right">
+    <div class="lp-right-glow2"></div>
     <div class="lp-card">
 
       <div class="lp-brand">
